@@ -19,8 +19,7 @@ set(dependencies
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS} 
-                            ${EIGEN3_INCLUDE_DIRS} 
-                            ${Boost_INCLUDE_DIR}
+                            ${EIGEN3_INCLUDE_DIRS}
                             ${BOOST_INCLUDE_DIRS}
                             ${TBB_INCLUDE_DIRS}
 )

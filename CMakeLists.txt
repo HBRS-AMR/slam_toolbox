@@ -211,6 +211,10 @@ install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(DIRECTORY maps
+  DESTINATION share/${PROJECT_NAME}
+)
+
 install(FILES solver_plugins.xml rviz_plugins.xml
   DESTINATION share
 )
