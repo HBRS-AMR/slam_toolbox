@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import os
+import sys
 
 from ament_index_python.packages import get_package_share_directory
 
@@ -24,6 +25,11 @@ from nav2_common.launch import RewrittenYaml
 
 
 def generate_launch_description():
+    for arg in sys.argv:
+        if arg.startswith("map_name:="):
+            map_name = str(arg.split(":=")[1])
+        else:
+            map_name = 'map'
     # Get the launch directory
     bringup_dir = get_package_share_directory('slam_toolbox')
 
@@ -64,11 +70,11 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'map',
-            default_value=os.path.join(bringup_dir, 'maps', 'map.yaml'),
+            default_value=os.path.join(bringup_dir, 'maps', map_name+'.yaml'),
             description='Full path to map yaml file to load'),
 
         DeclareLaunchArgument(
-            'use_sim_time', default_value='false',
+            'use_sim_time', default_value='true',
             description='Use simulation (Gazebo) clock if true'),
 
         DeclareLaunchArgument(
